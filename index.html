@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors Game</title>
+  <script src="https://use.fontawesome.com/b169762f77.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0065a0;
+    }
+
+    .container {
+      width: 80%;
+      background-color: #689f39;
+      margin: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position:relative;
+    }
+
+    .playcontainer {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      border: 1px whitesmoke solid;
+    }
+
+    .scorecontainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-self: flex-start;
+      width:100%;
+      /* border: 1px whitesmoke solid; */
+    }
+
+    .rulescontainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      border: 1px #0065a0 solid;
+      width: 200px;
+      height: 80px;
+      border-radius: 5px;
+      background-color: #f0ae00;
+      text-align: center;
+      padding: 5px 10px;
+      margin: 10px;
+      font-family: 'Orbitron', sans-serif;
+      ;
+      font-size: 30px;
+      color: #0065a0;
+      box-shadow: 5px 5px #888888;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #yes,#no{
+      width:120px;
+      height: 60px;;
+    }
+    #msg{
+      color:#f0ae00;
+      font-size: 30px;      
+    }
+    #msg-check{
+      color:#f0ae00;
+      font-size: 20px;
+    }
+
+
+    .button:hover {
+      background-color: #a9e00f;
+    }
+
+
+    .game-title {
+      margin: auto;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 30px;
+      text-align: center;
+      color: #f0ae00;
+    }
+
+    .rules {
+      border: 1px whitesmoke dashed;
+      margin: 3px;
+      color: brown;
+      width: 90%;
+      font-weight: bolder;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .scorecard{
+      width:50px;
+      height: 50px;
+      border:1px solid white;
+      background-color: #0065a0;
+      color:antiquewhite;
+      margin:10px;
+      padding:5px;
+
+    }
+    #comp{
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 20px;
+      background-color: black;
+    }
+
+    ol {
+      list-style-type: decimal-leading-zero;
+    }
+
+    .message{
+      position: absolute;
+      width:50%;
+      height:70%;
+      border:white solid 1px;
+      background-color: #0065a0;
+      top:0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      flex-wrap: wrap;
+      /* display:none; */
+      z-index: 1;      
+    }
+    footer{
+      background-color: #044164;
+      text-align: center;
+      width:100%;
+      height: 30px;
+      position: fixed;
+      bottom: 0px;
+      padding: 5px;
+      margin:0px;
+      color:#f0ae00;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-title">Game On!</div>
+  <div class="game-title"> let's Play...Rock, Paper, Scissors</div>
+  <hr />
+  <div class="container">
+    <div class="scorecontainer">
+      <!-- <fieldset>
+      <legend>Scores</legend> -->
+      <div class="scorecard" name="totalgames">
+       <div class="scorecardheader">Total</div>
+       <div class="scorecardtext">0</div>
+      </div>
+      <div class="scorecard" name="wins">
+        <div class="scorecardheader">Wins</div>
+        <div class="scorecardtext">0</div>
+       </div>
+       <div class="scorecard" name="lost">
+        <div class="scorecardheader">Lose</div>
+        <div class="scorecardtext">0</div>
+       </div>
+       <div class="scorecard" name="ties">
+        <div class="scorecardheader">Ties</div>
+        <div class="scorecardtext">0</div>
+       </div>   
+    </div>      
+    <div class="playcontainer">
+      
+        <button id="rock" class="button"><i class="fa fa-hand-rock-o" aria-hidden="true">Rock</i></button>
+        <button id="paper" class="button"><i class="fa fa-hand-paper-o" aria-hidden="true">Paper</i></button>
+        <button id="scissors" class="button"><i class="fa fa-hand-scissors-o" aria-hidden="true">Scissors</i>      
+        <button id="comp" class="button" disabled>Computer<i class="fa fa-spinner fa-spin fa-cog fa-fw"></i></button>
+        <div class="message">
+          <div id="msg">You Win!</div>
+          <div id="msg-check">Play Again?</div>
+          <button id="yes" class="button">Yes</button>
+          <button id="no" class="button">No</button>
+        </div>
+    </div>    
+    <div class="rulescontainer">
+      <div class="rules">
+        How to Play:
+        <ol>
+          <li>Select one of among the objects - Rock, Paper, Scissors.</li>
+          <li>Computer will randomly select an object too.</li>
+          <li>Depending on what object you select and what object computer selects, the win or lose or tie is decided as
+            per the rules.</li>
+          <li>See the score board as you play.Enjoy!</li>
+        </ol>
+      </div>
+      <div class="rules">
+        Rules: You are playing against computer.
+        <ol>
+          <li>Rock, beats scissors, loses to paper.</li>
+          <li>Paper, beats rock, loses to scissors.</li>
+          <li>Scissors, beats paper, loses to rock.</li>
+          <li>Anytime you and computer selects same object. It's a tie.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div style="height: 40px;"></div>
+  <footer>
+    &copy;Abhijeet Bhagat | <a href=""></a><i class="fa fa-github" aria-hidden="true"></i></a></footer>
+  </footer>
+  <script> 
+
+  </script>
+</body>
+</html>
